@@ -29,6 +29,7 @@ def clean_text(text: str):
     # Удаление стоп-слов
     words = [w for w in text.split() if w.lower() not in russian_stopwords]
     text = ' '.join(words)
+    text = re.sub(r'[\n\r\t]+', ' ', text)
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
