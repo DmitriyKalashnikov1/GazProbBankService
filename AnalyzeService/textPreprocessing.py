@@ -54,8 +54,12 @@ def lemmatize_natasha(text: str):
 
 def textToLemmas(text: str):
     # Скачайте один раз, если еще не делали:
-    nltk.download('stopwords')
-    nltk.download('punkt')
+    try:
+        nltk.data.find('stopwords')
+        nltk.data.find('punkt')
+    except:
+        nltk.download('stopwords', quiet=True)
+        nltk.download('punkt', quiet=True)
 
     text = text.lower()
 
