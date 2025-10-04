@@ -16,10 +16,7 @@
 Для запуска выполните следующую команду:
 ```bash
 pip3 install -r ./req.txt
-cd ./AnalyzeService && \
-    uvicorn app:app --reload --host 0.0.0.0 --port 8000
-cd ./DashboardService && \
-     streamlit run app.py
+sh ./start.sh
 ```
 
 ## Внешний вид дашборда (на момент 3 октября 2025)
