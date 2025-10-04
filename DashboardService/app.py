@@ -1,3 +1,4 @@
+import numpy as np
 import requests
 import json
 import pandas as pd
@@ -27,6 +28,12 @@ if submit:
         answ = json.loads(resp.text)[0]
         st.write(f"## Topics: {answ['topics']}")
         st.write(f"## Sentiments: {answ['sentiments']}")
+
+        trunatedSentiments = np.trim_zeros(answ['sentiments'])
+
+        sentDf = pd.DataFrame(trunatedSentiments, index=[f for f in answ['topics']])
+
+        st.bar_chart(data=sentDf)
     else:
         st.write("## Ups! Something wrong with backend!")
 
